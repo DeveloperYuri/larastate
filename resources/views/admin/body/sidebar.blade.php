@@ -1,7 +1,7 @@
 <nav class="sidebar">
     <div class="sidebar-header">
-      <a href="{{ route('admin.dashboard')}}" class="sidebar-brand">
-        Noble<span>UI</span>
+      <a href="{{ route('admin.dashboard')}}" class="sidebar-brand mt-4 mb-3" style="font-size: 18px">
+        YURI <span>DASHBOARD</span>
       </a>
       <div class="sidebar-toggler not-active">
         <span></span>
@@ -18,6 +18,15 @@
             <span class="link-title">Dashboard</span>
           </a>
         </li>
+
+        <li class="nav-item nav-category">Role</li>
+        <li class="nav-item">
+          <a href="{{ url('admin/users')}}" class="nav-link">
+            <i class="link-icon" data-feather="box"></i>
+            <span class="link-title">Users</span>
+          </a>
+        </li>
+
         <li class="nav-item nav-category">web apps</li>
         <li class="nav-item">
           <a class="nav-link" data-bs-toggle="collapse" href="#emails" role="button" aria-expanded="false" aria-controls="emails">
