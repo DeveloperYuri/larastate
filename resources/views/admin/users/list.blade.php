@@ -30,6 +30,7 @@
                                         <th>Role</th>
                                         <th>Status</th>
                                         <th>Created at</th>
+                                        <th>Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -65,6 +66,10 @@
                                                 @endif
                                             </td>
                                             <td>{{ date('d-m-Y', strtotime($value->created_at)) }}</td>
+                                            <td>
+                                                <a class="dropdown-item d-flex align-items-center" href="{{ url('admin/users/view/'.$value->id)}}"><i data-feather="eye" class="icon-sm me-2"></i> <span class="">View</span></a>
+
+                                            </td>
                                         </tr>
                                     @endforeach
                                 </tbody>
