@@ -3,6 +3,8 @@
 @section('admin')
     <div class="page-content">
 
+        @include('_message')
+        
         <div class="row inbox-wrapper">
             <div class="col-lg-12">
                 <div class="card">
@@ -104,9 +106,9 @@
                                                 <label class="col-md-2 col-form-label">To:</label>
                                                 <div class="col-md-10">
                                                     <select class="compose-multiple-select form-select" name="email">
-                                                        <option value="AL">Select Email</option>
+                                                        <option value="AL">Select Email[Agent and User]</option>
                                                         @foreach ($getEmail as $value)
-                                                            <option value="{{ $value->id }}">{{ $value->email }}</option>
+                                                            <option value="{{ $value->id }}">{{ $value->email }} - {{ $value->role}}</option>
                                                         @endforeach
                                                     </select>
                                                 </div>
