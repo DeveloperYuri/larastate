@@ -8,84 +8,9 @@
                 <div class="card">
                     <div class="card-body">
                         <div class="row">
-                            <div class="col-lg-3 border-end-lg">
-                                <div class="d-flex align-items-center justify-content-between">
-                                    <button class="navbar-toggle btn btn-icon border d-block d-lg-none"
-                                        data-bs-target=".email-aside-nav" data-bs-toggle="collapse" type="button">
-                                        <span class="icon"><i data-feather="chevron-down"></i></span>
-                                    </button>
-                                    <div class="order-first">
-                                        <h4>Mail Service</h4>
-                                        <p class="text-muted">amiahburton@gmail.com</p>
-                                    </div>
-                                </div>
-                                <div class="d-grid my-3">
-                                    <a class="btn btn-primary" href="./compose.html">Compose Email</a>
-                                </div>
-                                <div class="email-aside-nav collapse">
-                                    <ul class="nav flex-column">
-                                        <li class="nav-item active">
-                                            <a class="nav-link d-flex align-items-center" href="../email/inbox.html">
-                                                <i data-feather="inbox" class="icon-lg me-2"></i>
-                                                Inbox
-                                                <span class="badge bg-danger fw-bolder ms-auto">2
-                                            </a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link d-flex align-items-center" href="#">
-                                                <i data-feather="mail" class="icon-lg me-2"></i>
-                                                Sent Mail
-                                            </a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link d-flex align-items-center" href="#">
-                                                <i data-feather="briefcase" class="icon-lg me-2"></i>
-                                                Important
-                                                <span class="badge bg-secondary fw-bolder ms-auto">4
-                                            </a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link d-flex align-items-center" href="#">
-                                                <i data-feather="file" class="icon-lg me-2"></i>
-                                                Drafts
-                                            </a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link d-flex align-items-center" href="#">
-                                                <i data-feather="star" class="icon-lg me-2"></i>
-                                                Tags
-                                            </a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link d-flex align-items-center" href="#">
-                                                <i data-feather="trash" class="icon-lg me-2"></i>
-                                                Trash
-                                            </a>
-                                        </li>
-                                    </ul>
-                                    <p class="text-muted tx-12 fw-bolder text-uppercase mb-2 mt-4">Labels</p>
-                                    <ul class="nav flex-column">
-                                        <li class="nav-item">
-                                            <a class="nav-link d-flex align-items-center" href="#">
-                                                <i data-feather="tag" class="text-warning icon-lg me-2"></i>
-                                                Important
-                                            </a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link d-flex align-items-center" href="#">
-                                                <i data-feather="tag" class="text-primary icon-lg me-2"></i>
-                                                Business
-                                            </a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link d-flex align-items-center" href="#">
-                                                <i data-feather="tag" class="text-info icon-lg me-2"></i>
-                                                Inspiration
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
+
+                            @include('admin.email._sidebar')
+                            
                             <div class="col-lg-9">
                                 <div class="p-3 border-bottom">
                                     <div class="row align-items-center">
@@ -164,7 +89,7 @@
                                                 <a class="favorite" href="javascript:;"><span><i
                                                             data-feather="star"></i></span></a>
                                             </div>
-                                            <a href="./read.html" class="email-list-detail">
+                                            <a href="{{ url('admin/email/read/'.$value->id)}}" class="email-list-detail">
                                                 <div class="content">
                                                     <span class="from">{{ $value->subject }}</span>
                                                     <p class="msg">{{ $value->descriptions }}</p>

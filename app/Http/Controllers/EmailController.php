@@ -43,14 +43,12 @@ class EmailController extends Controller
         return view('admin.email.send', $data);
     }
 
-    public function admin_email_sent_delete(Request $request) {
-        if(!empty($request->id))
-        {
+    public function admin_email_sent_delete(Request $request)
+    {
+        if (!empty($request->id)) {
             $option = explode(',', $request->id);
-            foreach($option as $id)
-            {
-                if(!empty($id))
-                {
+            foreach ($option as $id) {
+                if (!empty($id)) {
                     $getRecord = ComposeEmailModel::find($id);
                     $getRecord->delete();
                 }
@@ -58,5 +56,21 @@ class EmailController extends Controller
         }
 
         return redirect()->back()->with('success', 'Send Email Successfully Deleted');
+    }
+
+    public function admin_email_read($id, Request $request)
+    {
+        $data['getRecord'] = ComposeEmailModel::find($id);
+        return view('admin.email.read', $data);
+    }
+
+    public function admin_email_read_delete($id, Request $request)
+    {
+        
+        $deleteRecord = ComposeEmailModel::find($id);
+        $deleteRecord->delete();
+
+        return redirect('admin/email/sent')->with('success', 'Send Email Successfully Deleted');
+
     }
 }
