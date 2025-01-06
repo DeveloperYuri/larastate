@@ -16,9 +16,10 @@ class EmailController extends Controller
         return view('admin.email.compose', $data);
     }
 
-    public function email_compose_post(Request $request){
+    public function email_compose_post(Request $request)
+    {
         //dd($request->all());
-        
+
         $save = new ComposeEmailModel;
         $save->user_id = $request->user_id;
         $save->cc_email = trim($request->cc_email);
@@ -31,9 +32,31 @@ class EmailController extends Controller
 
         Mail::to($getUserEmail->email)->cc($request->cc_email)->send(new ComposeEmailMail($save));
         //email end
-        
-      
-        return redirect('admin/email/compose')->with('success', 'Email Sucessfully Send ..');
 
+
+        return redirect('admin/email/compose')->with('success', 'Email Sucessfully Send ..');
+    }
+
+    public function email_sent(Request $request)
+    {
+        $data['getRecord'] = ComposeEmailModel::get();
+        return view('admin.email.send', $data);
+    }
+
+    public function admin_email_sent_delete(Request $request) {
+        if(!empty($request->id))
+        {
+            $option = explode(',', $request->id);
+            foreach($option as $id)
+            {
+                if(!empty($id))
+                {
+                    $getRecord = ComposeEmailModel::find($id);
+                    $getRecord->delete();
+                }
+            }
+        }
+
+        return redirect()->back()->with('success', 'Send Email Successfully Deleted');
     }
 }
