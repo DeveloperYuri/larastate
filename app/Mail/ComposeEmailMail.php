@@ -13,12 +13,18 @@ class ComposeEmailMail extends Mailable
 {
     use Queueable, SerializesModels;
 
+    public $save;
+
     /**
      * Create a new message instance.
      */
-    public function __construct()
+    public function __construct($save)
     {
-        //
+        $this->save = $save;
+    }
+
+    public function build(){
+        return $this->markdown('email.compose_email_mail')->subject(config('app.name').',New Mail Send');
     }
 
     /**

@@ -18,7 +18,7 @@ class EmailController extends Controller
 
     public function email_compose_post(Request $request){
         //dd($request->all());
-
+        
         $save = new ComposeEmailModel;
         $save->user_id = $request->user_id;
         $save->cc_email = trim($request->cc_email);
@@ -31,6 +31,7 @@ class EmailController extends Controller
 
         Mail::to($getUserEmail->email)->cc($request->cc_email)->send(new ComposeEmailMail($save));
         //email end
+        
       
         return redirect('admin/email/compose')->with('success', 'Email Sucessfully Send ..');
 
